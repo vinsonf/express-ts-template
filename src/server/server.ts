@@ -1,14 +1,20 @@
 import express from "express";
 import cors from "cors";
+import path from 'path';
+const __dirname = path.resolve();
+console.log(__dirname);
+const port = 3000;
 
 const app = express();
 app.get('/', function(req, res) {
-  console.log('app')
-  res.json({test: 'tes2'})
+  res.json({test: 'test'})
+});
+app.get('/users', function(req, res) {
+  res.sendFile(path.join(__dirname, 'users.json'));
 });
 
-app.listen(3333, function() {
-  console.log(`running on http://localhost:3333`)
+app.listen(port, function() {
+  console.log(`running on http://localhost:${port}`)
 }) 
 
 
